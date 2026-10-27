@@ -1,12 +1,4 @@
-type Appointment = {
-  appointmentId: string;
-  patientName: string;
-  doctor: string;
-  specialty: string;
-  date: string;
-  time: string;
-  clinic: string;
-};
+import { Appointment } from "../types";
 
 type Intent =
   | "wrong_number"
@@ -53,11 +45,6 @@ function detectIntents(reply: string): Intent[] {
   return intents.filter((intent) =>
     KEYWORDS[intent].some((keyword) => text.includes(` ${keyword}`)),
   );
-}
-
-function formatDate(date: string): string {
-  const [year, month, day] = date.split("-");
-  return `${day}.${month}.${year}`;
 }
 
 function answer(question: Question, a: Appointment): string {
